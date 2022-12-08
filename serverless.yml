@@ -1,0 +1,27 @@
+service: gmail-sender
+
+provider:
+  name: aws
+  profile: ${file(./config.yml):${opt:stage, self:provider.stage}.PROFILE}
+  runtime: nodejs12.x
+
+  environment:
+    ALLOW_ORIGIN: ${file(./config.yml):${opt:stage, self:provider.stage}.ALLOW_ORIGIN}
+    USER: ${file(./config.yml):${opt:stage, self:provider.stage}.USER}
+    PASS: ${file(./config.yml):${opt:stage, self:provider.stage}.PASS}
+    FROM: ${file(./config.yml):${opt:stage, self:provider.stage}.FROM}
+    TO: ${file(./config.yml):${opt:stage, self:provider.stage}.TO}
+    CC: ${file(./config.yml):${opt:stage, self:provider.stage}.CC}
+    WEBHOOK: ${file(./config.yml):${opt:stage, self:provider.stage}.WEBHOOK}
+
+functions:
+  send:
+    handler: handler.handler
+    timeout: 30
+    events:
+      - http:
+          path: send
+          method: post
+          cors:
+            origin: ${file(./config.yml):${opt:stage, self:provider.stage}.ALLOW_ORIGIN}
+            allowCredentials: false

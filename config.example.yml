@@ -1,0 +1,8 @@
+dev:
+  ALLOW_ORIGIN: "*"
+  CC: cc
+  FROM: from
+  PASS: password
+  PROFILE: default
+  TO: to
+  USER: your@email.com

@@ -1,0 +1,15 @@
+{
+  "name": "gmail-sender",
+  "version": "0.0.1",
+  "description": "Lambda function to send emails via Gmail",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "gobernabe@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "nodemailer": "^6.4.2"
+  }
+}

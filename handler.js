@@ -42,8 +42,8 @@ module.exports.handler = async event => {
     text: params.text
   };
 
-  // call webhook
-  if (process.env.WEBHOOK) {
+  // call webhook 
+   if (process.env.WEBHOOK) {
     await axios({
       url: process.env.WEBHOOK,
       method: "POST",
@@ -67,3 +67,4 @@ module.exports.handler = async event => {
     return generateResponse(400, { message: e });
   }
 };
+ 
